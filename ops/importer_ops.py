@@ -9,10 +9,10 @@ from bpy_extras.io_utils import ImportHelper
 from ..utils.brushes_utils import create_brushes_from_images
 
 
-class IMG2BrushImporter(Operator, ImportHelper):
+class IMG2BRUSH_OT_import_brushes(Operator, ImportHelper):
     """Import Images as Brushes"""
 
-    bl_idname = "img2brush.import_images"
+    bl_idname = "img2brush.import_brushes"
     bl_label = "Images to Brushes"
 
     temp_filters: bool = True

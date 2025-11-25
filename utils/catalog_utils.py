@@ -20,7 +20,6 @@ VERSION 1
 
 
 class AssetCatalog:
-
     def __init__(self, uuid, path, name):
         self.uuid = uuid
         self.path = path

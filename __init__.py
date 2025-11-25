@@ -3,14 +3,24 @@ from bpy.props import (
     CollectionProperty,
 )
 
-from .ops.debug_ops import IMG2BrushClearDataOperator, IMG2BrushDebugOperator
-from .ops.editor_ops import IMG2BrushDeselectAllOperator, IMG2BrushSelectAllOperator
-from .ops.importer_ops import IMG2BrushImporter
+from .ops.debug_ops import IMG2BRUSH_OT_clear_data, IMG2BRUSH_OT_debug
+from .ops.editor_ops import (
+    IMG2BRUSH_OT_deselect_all_brushes,
+    IMG2BRUSH_OT_select_all_brushes,
+    IMG2BRUSH_OT_select_brushes,
+)
+from .ops.importer_ops import IMG2BRUSH_OT_import_brushes
 from .settings.settings import IMG2BrushSettings
-from .ui.debug_panel import IMG2BrushDebugPanel
+from .ui.debug_panel import IMG2BRUSH_PT_debug_panel
 from .ui.editor_list import IMG2BRUSH_UL_created_brushes
-from .ui.editor_panel import EditorIMG2BrushPanel
-from .ui.main_panel import IMG2BrushPanel
+from .ui.editor_panel import IMG2BRUSH_PT_editor_panel
+from .ui.main_panel import (
+    IMG2BRUSH_PT_panel_action,
+    IMG2BRUSH_PT_panel_brush,
+    IMG2BRUSH_PT_panel_import,
+    IMG2BRUSH_PT_panel_main,
+    IMG2BRUSH_PT_panel_naming,
+)
 from .utils.brush_holder_utils import BrushHolderClass
 
 # This program is free software; you can redistribute it and/or modify
@@ -27,34 +37,30 @@ from .utils.brush_holder_utils import BrushHolderClass
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
-bl_info = {
-    "name": "Images to Brushes",
-    "author": "Antony Naumovic",
-    "version": (0, 0, 0, 1),
-    "description": "Create brushes from images",
-    "blender": (5, 0, 0),
-    "location": "View3D > Sidebar > Brushes",
-    "category": "Sculpting",
-}
-
-
 classes = (
-    IMG2BrushImporter,
-    IMG2BrushPanel,
-    IMG2BrushDebugOperator,
-    IMG2BrushSelectAllOperator,
-    IMG2BrushDeselectAllOperator,
+    IMG2BRUSH_OT_import_brushes,
+    IMG2BRUSH_PT_panel_main,
+    IMG2BRUSH_PT_panel_brush,
+    IMG2BRUSH_PT_panel_naming,
+    IMG2BRUSH_PT_panel_import,
+    IMG2BRUSH_PT_panel_action,
+    IMG2BRUSH_OT_debug,
+    IMG2BRUSH_OT_select_all_brushes,
+    IMG2BRUSH_OT_deselect_all_brushes,
+    IMG2BRUSH_OT_select_brushes,
     IMG2BRUSH_UL_created_brushes,
     IMG2BrushSettings,
     BrushHolderClass,
-    EditorIMG2BrushPanel,
-    IMG2BrushClearDataOperator,
-    IMG2BrushDebugPanel,
+    IMG2BRUSH_PT_editor_panel,
+    IMG2BRUSH_OT_clear_data,
+    IMG2BRUSH_PT_debug_panel,
 )
 
 
 def img2brush_func_import(self, context):
-    self.layout.operator(IMG2BrushImporter.bl_idname, text="Images to Brushes")
+    self.layout.operator(
+        IMG2BRUSH_OT_import_brushes.bl_idname, text="Images to Brushes"
+    )
 
 
 def register():

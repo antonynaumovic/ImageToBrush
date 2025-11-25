@@ -1,0 +1,1 @@
+blender --command extension build --source-dir "X:\Github\ImageToBrush" --output-dir "X:\Github\ImageToBrush"
