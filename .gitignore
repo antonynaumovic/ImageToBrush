@@ -185,3 +185,5 @@ cython_debug/
 blender_vscode_development/
 
 .vscode/
+
+*.zip
